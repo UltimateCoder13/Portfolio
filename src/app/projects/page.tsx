@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { Particles } from "@/components/ui/particles";
 import CustomCursor from "@/components/CustomCursor";
 
@@ -39,7 +38,7 @@ const projects = [
     title: "Carbon Fiber Aerodynamics & Composite Manufacturing",
     timeline: "2025 – Present",
     description: "Engineered and manufactured a comprehensive custom aerodynamic package, fabricating multi-element front/rear wings, side diffusers, and the primary nose cone. Executed complex composite manufacturing workflows utilizing segmented 3D-printed molds, wet lay-ups, and vacuum bagging. Diagnosed structural rigidity issues in early rear-side plate iterations, successfully resolving flex by integrating specialized core materials. Utilized SolidWorks to design custom wing mounting inserts. Operated water jet, CO2, and fiber laser cutters for precision metal and polycarbonate fabrication. Currently spearheading the team's transition to large-format CNC-machined foam molds for next-generation aero development.",
-    image: "/projects/FSAE.jpg",
+    image: "/projects/FSAE.jpg?v=3",
     stack: ["Carbon Fiber Composites", "Vacuum Bagging", "SolidWorks", "Water Jet Machining", "Laser Cutting (Fiber & CO2)", "Structural Cores", "3D-Printed Tooling", "CNC Machining"]
   },
   {
@@ -103,30 +102,43 @@ export default function ProjectsPage() {
         </div>
 
         {/* Project Index */}
-        <div className="flex flex-col gap-32 pb-40 mt-12">
+        <div className="flex flex-col gap-28 pb-40 mt-12">
           {projects.map((project, index) => (
             <div 
               key={project.id} 
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
             >
               {/* Image Column */}
-              <div 
-                className={`relative aspect-[4/3] rounded-2xl border border-white/10 bg-white/5 overflow-hidden group shadow-lg ${index % 2 === 1 ? 'lg:order-last' : ''}`}
-              >
-                {/* Accent line on hover */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#FF4D00] origin-left scale-x-0 transition-transform duration-700 ease-out group-hover:scale-x-100 z-20" />
-                
-                <Image 
-                  src={project.image} 
-                  alt={project.title} 
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105 opacity-80 group-hover:opacity-100" 
-                />
-                
-                {/* Subtle dark overlay that fades on hover */}
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
-              </div>
+              {project.slug === 'fsae-aero-package' ? (
+                <div 
+                  className={`relative aspect-[4/3] w-full rounded-2xl border border-white/10 bg-white/5 overflow-hidden group shadow-lg ${index % 2 === 1 ? 'lg:order-last' : ''}`}
+                >
+                  {/* Accent line on hover */}
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#FF4D00] origin-left scale-x-0 transition-transform duration-700 ease-out group-hover:scale-x-100 z-20" />
+                  
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105 opacity-80 group-hover:opacity-100" 
+                  />
+                  
+                  {/* Subtle dark overlay that fades on hover */}
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
+                </div>
+              ) : (
+                <div className={`flex items-center justify-center ${index % 2 === 1 ? 'lg:order-last' : ''}`}>
+                  <div className="relative inline-block rounded-2xl border border-white/10 bg-[#0e0e0e] overflow-hidden group shadow-2xl transition-all duration-500 hover:border-white/25">
+                    {/* Accent line on hover */}
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#FF4D00] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100 z-20" />
+                    
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className={`w-auto h-auto ${project.slug === 'frc-2024-robot' ? 'max-h-[540px] md:max-h-[580px]' : 'max-h-[420px]'} max-w-full object-contain block rounded-2xl transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100`} 
+                    />
+                  </div>
+                </div>
+              )}
               
               {/* Text Column */}
               <div className={`flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-first' : ''}`}>
@@ -144,12 +156,12 @@ export default function ProjectsPage() {
                   {project.title}
                 </h2>
                 
-                <p className="text-lg leading-relaxed text-white/50 mb-8">
+                <p className="text-base md:text-lg leading-relaxed text-white/50 mb-8">
                   {project.description}
                 </p>
                 
                 {/* Tech stack badges */}
-                <div className="flex flex-wrap gap-2 mb-10">
+                <div className="flex flex-wrap gap-2">
                   {project.stack.map(tech => (
                     <span 
                       key={tech} 
@@ -159,17 +171,6 @@ export default function ProjectsPage() {
                     </span>
                   ))}
                 </div>
-                
-                {/* Call to Action */}
-                <Link 
-                  href={`/projects/${project.slug}`} 
-                  className="group inline-flex items-center gap-3 text-sm font-bold tracking-[0.08em] uppercase text-[#F5F5F5] pb-3 border-b border-white/20 hover:border-[#FF4D00] transition-colors w-fit"
-                >
-                  Read Full Case Study 
-                  <span className="text-[#FF4D00] group-hover:translate-x-1 transition-transform duration-300">
-                    →
-                  </span>
-                </Link>
               </div>
             </div>
           ))}

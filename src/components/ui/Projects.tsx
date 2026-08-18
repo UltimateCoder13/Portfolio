@@ -37,7 +37,7 @@ const projects = [
     title: "Aero Package",
     category: "Formula Racing",
     year: "2025",
-    image: "/projects/FSAE.jpg",
+    image: "/projects/FSAE.jpg?v=3",
     link: "#",
   }
 ];

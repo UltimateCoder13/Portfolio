@@ -9,7 +9,7 @@ const experiences = [
   {
     id: "01",
     dates: "Sept 2025 — Present",
-    role: "Aerodynamics Fabricator",
+    role: "Aerodynamics Team Member",
     org: "UofA Formula Racing Team",
     bullets: [
       "Designed molds in SolidWorks and manufactured carbon fiber composite aero parts using wet lay-up.",
