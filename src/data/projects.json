@@ -1,0 +1,19 @@
+[
+  {
+    "id": "project-one-slug",
+    "title": "Autonomous Drone Navigation",
+    "shortDescription": "Computer vision system for indoor flight.",
+    "role": "Lead Programmer",
+    "timeline": "Fall 2025",
+    "techStack": ["Python", "OpenCV", "C++"],
+    "thumbnailImage": "/images/projects/drone-thumb.jpg",
+    "heroImage": "/images/projects/drone-hero.jpg",
+    "fullDescription": "A detailed explanation of the engineering problem, the approach, and the solution...",
+    "mediaGallery": [
+      "/images/projects/drone-1.jpg",
+      "/images/projects/drone-gif.gif"
+    ],
+    "githubLink": "https://github.com/...",
+    "liveLink": ""
+  }
+]
