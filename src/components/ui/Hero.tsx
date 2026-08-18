@@ -5,34 +5,10 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export default function Hero() {
-  const [currentTime, setCurrentTime] = useState("");
   const [mounted, setMounted] = useState(false);
-  const [location, setLocation] = useState("LOCATING...");
 
   useEffect(() => {
     setMounted(true);
-
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const lat = Math.abs(position.coords.latitude).toFixed(4);
-          const latDir = position.coords.latitude >= 0 ? "N" : "S";
-          const lon = Math.abs(position.coords.longitude).toFixed(4);
-          const lonDir = position.coords.longitude >= 0 ? "E" : "W";
-          setLocation(`${lat} ${latDir} / ${lon} ${lonDir}`);
-        },
-        () => setLocation("LOCATION UNAVAILABLE"),
-        { timeout: 10000, maximumAge: 60000 }
-      );
-    } else {
-      setLocation("LOCATION UNAVAILABLE");
-    }
-
-    const interval = setInterval(() => {
-      const now = new Date();
-      setCurrentTime(now.toLocaleTimeString("en-US", { hour12: false }));
-    }, 1000);
-    return () => clearInterval(interval);
   }, []);
 
   if (!mounted) return <div className="min-h-screen bg-transparent" />;
@@ -64,20 +40,6 @@ export default function Hero() {
             DHAYA SRINIVASAN
           </motion.h1>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="mt-12 flex flex-col items-center gap-6 text-[10px] font-light tracking-[0.3em] text-foreground/40 sm:flex-row sm:justify-center sm:gap-16 sm:text-xs"
-        >
-          <div className="flex items-center gap-3">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-            <span>STATUS: ACTIVE</span>
-          </div>
-          <div className="hidden sm:block">SYSTEM_TIME: {currentTime || "00:00:00"}</div>
-          <div>LOCATION: {location}</div>
-        </motion.div>
       </div>
 
       {/* Background Detail Elements (Subtle) */}

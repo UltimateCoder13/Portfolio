@@ -48,7 +48,7 @@ const projects = [
     title: "Hero Chair: AR & Brain-Computer Interface Wheelchair",
     timeline: "2023 - 2024",
     description: "Co-founded the team, conceptualized the core architecture, and led the physical fabrication of an omnidirectional wheelchair designed for quadriplegic users. Engineered two distinct hardware iterations: a rapid 3-day proof-of-concept, followed by a refined, professional-grade chassis built over two weeks for a live national presentation in Toronto. Integrated robust COTS swerve modules with a custom Python/JSON software bridge, successfully translating spatial vector data from a Microsoft HoloLens 2 (eye-tracking) and Muse headband (EEG) into real-time drivetrain kinematics. The project was awarded both 2nd Place and Fan Favorite.",
-    image: "/projects/samsung-chair.jpeg",
+    image: "/projects/Samsung Chair.jpeg",
     stack: ["Hardware Iteration", "Microsoft HoloLens 2 (AR)", "Muse Headband (BCI)", "Swerve Drive Kinematics", "Python", "JSON Data Pipelines", "Mechanical Fabrication", "Product Ideation"]
   }
 ];

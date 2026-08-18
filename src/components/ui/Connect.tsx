@@ -2,9 +2,8 @@ import Link from "next/link";
 
 export function Connect() {
   const socials = [
-    { name: "LinkedIn", link: "#" },
-    { name: "GitHub", link: "#" },
-    { name: "Twitter / X", link: "#" }
+    { name: "LinkedIn", link: "https://www.linkedin.com/in/dhaya-srinivasan-932781325/" },
+    { name: "GitHub", link: "https://github.com/UltimateCoder13" }
   ];
 
   return (
@@ -34,7 +33,9 @@ export function Connect() {
             {socials.map((social) => (
               <a 
                 key={social.name} 
-                href={social.link} 
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-2xl md:text-3xl font-medium text-[#F5F5F5] hover:text-[#FF4D00] transition-colors duration-300 w-fit group flex items-center gap-3"
               >
                 {social.name}
