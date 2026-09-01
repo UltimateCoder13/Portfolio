@@ -24,10 +24,10 @@ export function Featured3D() {
               Beyond the Build
             </h1>
             <p className="mt-6 text-neutral-300 max-w-lg text-lg font-light leading-relaxed">
-              Systems don't build themselves. Discover the logic, grit, and philosophy driving the engineer behind the architecture
+              Great projects usually come down to patience and being willing to fail a few times before getting it right. Learn more about my background.
             </p>
-            <Link 
-              href="/about" 
+            <Link
+              href="/about"
               className="mt-8 inline-flex items-center gap-3 px-8 py-4 border border-white/20 rounded-full text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 hover:border-[#FF4D00] hover:text-[#FF4D00] group w-fit pointer-events-auto"
             >
               Get to know Dhaya

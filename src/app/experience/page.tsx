@@ -3,22 +3,47 @@
 import Link from "next/link";
 import { Particles } from "@/components/ui/particles";
 import CustomCursor from "@/components/CustomCursor";
-import OrangeMorphBlob from "@/components/ui/orange-morph-blob";
 
 const experiences = [
   {
     id: "01",
-    dates: "Sept 2025 — Present",
-    role: "Aerodynamics Team Member",
-    org: "UofA Formula Racing Team",
+    dates: "Oct 2025 - Present",
+    role: "FTC Team Mentor",
+    org: "STEM Collegiate",
     bullets: [
-      "Designed molds in SolidWorks and manufactured carbon fiber composite aero parts using wet lay-up.",
-      "Worked in a high-risk shop environment, prioritizing precision manufacturing to meet strict weight targets.",
-    ],
-    skills: ["SolidWorks", "Carbon Fiber", "Wet Lay-up", "Precision Manufacturing"],
+      "Mentored students through the engineering design cycle, teaching 3D CAD modeling, mechanical fabrication and good electrical practices.",
+      "Teaching students root-cause troubleshooting techniques to solve mechanical and electrical failures under tight time limits.",
+      "Guiding students in the robot building process and ensuring that the robot is competition-ready.",
+      "Managed technical inspection prep, and pit strategy to support team performance during live events."],
+    skills: ["Mentorship", "Engineering Design Cycle", "Troubleshooting", "Teamwork", "Communication", "Leadership",],
   },
   {
     id: "02",
+    dates: "Sept 2025 — Present",
+    role: "Aerodynamics Team Member",
+    org: "University of Alberta Formula Racing Team",
+    bullets: [
+      "Designed molds in SolidWorks and manufactured carbon fiber composite aero parts using vacuum assisted wet lay-up.",
+      "Collaborated in a shop environment, prioritizing precision and quality for the car.",
+      "Led the adoption of CNC-machined foam molds to improve the scalability and quality of the team's composite manufacturing process."
+    ],
+    skills: ["SolidWorks", "Carbon Fiber", "Wet Lay-up", "3D Printing", "CNC Machining"],
+  },
+  {
+    id: "03",
+    dates: "May 2026 — Aug 2026",
+    role: "Composites Research Intern",
+    org: "Composites Research Lab",
+    bullets: [
+      "Conducted advanced materials research in a laboratory environment, investigating the mechanical properties and behavior of experimental composites.",
+      "Fabricated and cured test specimens utilizing vacuum-assisted resin/composite lay-up techniques to evaluate structural integrity.",
+      "Operated large-scale additive manufacturing systems to 3D print Shape Memory Polymers (SMP) and PLA with a pellet extruder.",
+      "Developed and optimized thermal forming processes to transition SMP components from 2D sheets to complex 3D geometries."
+    ],
+    skills: ["Vacuum Lay-up", "Experimental Composites", "SMP 3D Printing", "Lab Research"],
+  },
+  {
+    id: "04",
     dates: "Sept 2018 — March 2026",
     role: "Warrant Officer 2nd Class",
     org: "Royal Canadian Air Cadets",
@@ -26,42 +51,46 @@ const experiences = [
       "Responsible for the supervision, discipline, and well-being of over 200 cadets in field survival environments.",
       "Served as Canteen Flight Sergeant, managing high-volume inventory and financial transactions.",
       "Trained for 7 years in survival training, leadership, and teamwork",
-      "Awarded the prestigious Lord Strathcona Medal for overall excellence in leadership and physical fitness"
+      "Awarded the prestigious Lord Strathcona Medal for overall excellence in leadership and physical fitness",
+      "Was awarded Top Cadets for 3 years in a row"
     ],
-    skills: ["Leadership", "Field Ops", "Logistics", "200+ Cadets", "Lord Strathcona Medal"],
+    skills: ["Leadership", "Survival Training", "Logistics", "200+ Cadets", "Lord Strathcona Medal"],
   },
   {
-    id: "03",
-    dates: "Sept 2024 — June 2025",
-    role: "Project Lead and Co-founder",
-    org: "Engineering Research & Drone Club",
+    id: "05",
+    dates: "Sept 2022 — June 2025",
+    role: "Co-founder",
+    org: "STEM IA Drone Club",
     bullets: [
       "Designed and tuned custom multi-rotor drones using Arducopter/Pixhawk, gaining hands-on experience with PID loops and ESC calibration.",
-      "Led a research project prototyping improvements for a PLA plastic recycling machine to close the loop on 3D printing waste.",
+      "Led new memeber in gaining experience in various aspects of drone technology such as getting their drone licence",
+      "Build a large scale RC airplane using foam featuring ESCs and flight controllers"
     ],
-    skills: ["Arducopter", "Pixhawk", "PID Tuning", "PLA Recycling"],
+    skills: ["Arducopter", "Pixhawk", "PID Tuning", "Electronics", "Leadership", "Mentorship"],
   },
   {
-    id: "04",
+    id: "06",
     dates: "Sept 2022 — June 2025",
-    role: "CoFounder, Strategy Lead, Electrical and Mechanical Member",
-    org: "FIRST Robotics Competition (Sparkans)",
+    role: "CoFounder, Strategy Lead, Electrical and Mechanical",
+    org: "FRC Team 9277 - Sparkans",
     bullets: [
       "Engineered robust mechanisms and innovative electrical mounting solutions for competition robots.",
       "Established team operational workflows, safety protocols (SOPs) for CNC machining, and trained rookies.",
       "Nominated for the prestigious FRC Dean's List Award (2024) for leadership and technical excellence.",
+      "Ranked second in Alberta for the 2025 season",
     ],
     skills: ["FRC Robotics", "CNC Machining", "Electrical Systems", "Mentorship"],
   },
   {
-    id: "05",
+    id: "07",
     dates: "Oct 2024 — May 2025",
-    role: "Co-founder & Tech Lead",
+    role: "Co-founder & Build Lead",
     org: "Samsung Solve for Tomorrow",
     bullets: [
       "Won 2nd Place Nationally by engineering an assistive mobility device for quadriplegic users.",
       "Integrated a Microsoft HoloLens AR headset with a Muse EEG headband.",
       "Developed custom logic/filtering algorithms to process noisy brainwave data for wheelchair navigation.",
+      "Won over $20 000 for my highschool robotics team."
     ],
     skills: ["HoloLens AR", "EEG/BCI", "Signal Processing", "Assistive Tech"],
   },
@@ -101,27 +130,19 @@ export default function ExperiencePage() {
         </nav>
 
         {/* Page Header */}
-        <div className="pt-24 pb-16 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-12 items-center">
-          {/* Left Column: Text */}
-          <div className="relative z-10">
-            <div className="flex items-center gap-2 text-xs tracking-[0.15em] uppercase text-[#FF4D00] mb-6">
-              <span className="w-8 h-px bg-[#FF4D00]"></span>
-              Career Timeline
-            </div>
-            <h1 className="text-5xl md:text-[5.5rem] font-extrabold leading-[0.95] tracking-tight">
-              Experience
-            </h1>
-            <p className="text-lg leading-relaxed text-white/50 max-w-xl mt-8">
-              A timeline of the teams I&apos;ve built with, the problems I&apos;ve
-              solved, and the systems I&apos;ve shipped — from competition
-              robotics to national-level engineering challenges.
-            </p>
+        <div className="pt-24 pb-20 flex flex-col items-center text-center max-w-3xl mx-auto">
+          <div className="flex items-center justify-center gap-2 text-xs tracking-[0.15em] uppercase text-[#FF4D00] mb-6">
+            <span className="w-8 h-px bg-[#FF4D00]"></span>
+            Career Timeline
+            <span className="w-8 h-px bg-[#FF4D00]"></span>
           </div>
-
-          {/* Right Column: 3D Blob */}
-          <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center -z-0">
-            <OrangeMorphBlob />
-          </div>
+          <h1 className="text-5xl md:text-[5.5rem] font-extrabold leading-[0.95] tracking-tight">
+            Experience
+          </h1>
+          <p className="text-lg leading-relaxed text-white/50 max-w-2xl mt-8">
+            A timeline of the teams I&apos;ve built with, the problems I&apos;ve
+            solved. From competition robotics to national-level engineering challenges.
+          </p>
         </div>
 
         {/* Timeline */}

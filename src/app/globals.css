@@ -6,8 +6,10 @@
   --accent: #FF4D00;
 }
 
-* {
-  cursor: none;
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none;
+  }
 }
 
 @theme inline {

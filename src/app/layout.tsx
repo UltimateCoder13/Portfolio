@@ -10,8 +10,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Engineering Portfolio | Cinematic Experience",
-  description: "A premium, interactive personal engineering portfolio.",
+  title: "Engineering Portfolio",
+  description: "A personal engineering portfolio.",
 };
 
 export default function RootLayout({

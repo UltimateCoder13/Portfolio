@@ -6,9 +6,16 @@ import Link from "next/link";
 
 const projects = [
   {
+    title: "Aerodynamics Package",
+    category: "Formula Racing",
+    year: "2025",
+    image: "/projects/FSAE.jpg?v=3",
+    link: "#",
+  },
+  {
     title: "Smart Wheelchair",
     category: "Samsung Solve For Tomorrow",
-    year: "2024",
+    year: "2025",
     image: "/projects/Samsung Chair.jpeg",
     link: "#",
   },
@@ -19,34 +26,13 @@ const projects = [
     image: "/projects/2025.jpg",
     link: "#",
   },
-  {
-    title: "FRC 2024: Crescendo",
-    category: "Competitive Robotics",
-    year: "2024",
-    image: "/projects/2024.jpg",
-    link: "#",
-  },
-  {
-    title: "FRC 2023: Charged Up",
-    category: "Competitive Robotics",
-    year: "2023",
-    image: "/projects/2023.jpg",
-    link: "#",
-  },
-  {
-    title: "Aero Package",
-    category: "Formula Racing",
-    year: "2025",
-    image: "/projects/FSAE.jpg?v=3",
-    link: "#",
-  }
 ];
 
 export function Projects() {
   const [activeProject, setActiveProject] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const springConfig = { stiffness: 150, damping: 15, mass: 0.1 };
+  const springConfig = { stiffness: 400, damping: 28, mass: 0.04 };
   const mouseX = useSpring(0, springConfig);
   const mouseY = useSpring(0, springConfig);
 
@@ -91,7 +77,7 @@ export function Projects() {
       </div>
 
       {/* Floating Image Reveal */}
-      <motion.div 
+      <motion.div
         className="pointer-events-none absolute left-0 top-0 z-50 w-[400px] h-[400px] hidden md:flex items-center justify-center"
         style={{
           x: mouseX,
@@ -104,14 +90,14 @@ export function Projects() {
         transition={{ opacity: { duration: 0.2 }, scale: { duration: 0.2 } }}
       >
         {projects.map((project, index) => (
-          <div 
+          <div
             key={index}
             className="absolute inset-0 flex items-center justify-center transition-opacity duration-300"
             style={{ opacity: activeProject === index ? 1 : 0 }}
           >
-            <img 
-              src={project.image} 
-              alt={project.title} 
+            <img
+              src={project.image}
+              alt={project.title}
               className="max-w-full max-h-full object-contain rounded-lg shadow-2xl shadow-black/50"
             />
           </div>

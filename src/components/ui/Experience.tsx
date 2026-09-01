@@ -3,24 +3,24 @@ import Link from "next/link";
 export function Experience() {
   const experiences = [
     {
-      role: "Candidate for B.S. in Engineering",
+      role: "Computer Engineering-Nanoscale System Design",
       company: "University of Alberta",
       date: "Class of 2029",
-      description: "Currently pursuing an engineering degree. Relevant coursework includes Multivariable Calculus, Engineering Mechanics, Differential Equations, and Computer Programming.",
-      skills: ["Python", "HTML/CSS/JS", "SolidWorks", "Fusion 360"],
+      description: "Currently pursuing an engineering degree in computer engineeringA specialized computer engineering degree bridging physical engineering with software systems, with an emphasis on microelectronics and integrated circuit design. Relevant coursework includes Multivariable Calculus, Engineering Mechanics, Differential Equations, and Computer Programming. Relevant coursework includes Multivariable Calculus, Engineering Mechanics, Differential Equations, and Computer Programming.",
+      skills: ["Python", "HTML/CSS/JS", "SolidWorks", "Fusion 360", "C++"],
     },
     {
       role: "Aero Sub-Team Member",
-      company: "UofA Formula Racing Team",
+      company: "University of Alberta Formula Racing Team",
       date: "Sept 2025 — Present",
-      description: "Designed precision molds and mounting brackets in SolidWorks to optimize aerodynamic geometry. Fabricated carbon fiber composite parts using wet lay-up techniques.",
+      description: "Designing high-performance aerodynamic components and structural brackets using Solidworks, with a focus on CFD analysis and composite material fabrication.",
       skills: ["SolidWorks", "CAD", "Composites", "Manufacturing"],
     },
     {
       role: "Co-Founder & Build Lead",
       company: "Sparkans FRC Robotics Team",
       date: "Sept 2022 — June 2025",
-      description: "Co-founded team and established core operational workflows. Engineered robust mechanisms and electrical mounting solutions. Nominated for the 2024 FRC Dean's List Award.",
+      description: "Co-founded team and established core operational workflows. Engineered robust mechanisms and electrical solutions. Nominated for the 2024 FRC Dean's List Award.",
       skills: ["Electronics Integration", "Mechanical Design", "Rapid Prototyping"],
     },
     {
@@ -50,7 +50,7 @@ export function Experience() {
 
       <div className="flex flex-col w-full">
         {experiences.map((exp, index) => (
-          <div 
+          <div
             key={index}
             className="group relative grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 py-12 border-b border-white/10 transition-colors duration-500 hover:bg-white/[0.02] -mx-8 px-8"
           >
@@ -70,8 +70,8 @@ export function Experience() {
               </p>
               <div className="flex flex-wrap gap-3 mt-4">
                 {exp.skills.map((skill, sIndex) => (
-                  <span 
-                    key={sIndex} 
+                  <span
+                    key={sIndex}
                     className="px-4 py-1.5 rounded-full border border-white/10 text-xs font-medium tracking-wider text-white/70 uppercase transition-colors duration-300 group-hover:border-[#FF4D00]/50 group-hover:text-[#FF4D00]"
                   >
                     {skill}
