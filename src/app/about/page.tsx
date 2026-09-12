@@ -122,12 +122,12 @@ export default function AboutPage() {
           <div className="bg-[#0a0a0a] p-8 relative group hover:bg-[#111] transition-colors overflow-hidden">
             <div className="absolute top-0 left-0 w-[3px] h-0 bg-[#FF4D00] transition-all duration-300 group-hover:h-full"></div>
             <div className="text-[0.7rem] tracking-[0.14em] uppercase text-[#FF4D00] mb-3">Design</div>
-            <div className="text-xl font-bold mb-3">CAD & 3D Modeling</div>
+            <div className="text-xl font-bold mb-3">CAD & CAM</div>
             <div className="w-full h-[2px] bg-white/10 mt-4 overflow-hidden">
               <div className="h-full bg-[#FF4D00] w-[95%] -translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-out"></div>
             </div>
             <div className="flex flex-wrap gap-2 mt-5">
-              {["SolidWorks", "Fusion 360", "Drafting"].map(tool => (
+              {["SolidWorks", "Fusion 360", "V-Carve", "OnShape"].map(tool => (
                 <span key={tool} className="text-[0.72rem] tracking-[0.04em] text-white/50 bg-white/5 border border-white/10 px-2.5 py-1">{tool}</span>
               ))}
             </div>
@@ -157,7 +157,7 @@ export default function AboutPage() {
               <div className="h-full bg-[#FF4D00] w-[80%] -translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-out delay-200"></div>
             </div>
             <div className="flex flex-wrap gap-2 mt-5">
-              {["Python", "HTML/CSS/JS", "Electronics Integration", "EEG Navigation"].map(tool => (
+              {["Python", "HTML/CSS/JS", "Electronics Integration"].map(tool => (
                 <span key={tool} className="text-[0.72rem] tracking-[0.04em] text-white/50 bg-white/5 border border-white/10 px-2.5 py-1">{tool}</span>
               ))}
             </div>

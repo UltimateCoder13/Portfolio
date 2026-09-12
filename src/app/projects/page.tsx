@@ -10,7 +10,7 @@ const projects = [
     slug: "frc-2023-robot",
     title: "FRC Competitive Robot: Systems & Drivetrain",
     timeline: "2022 – 2023",
-    description: "Co-engineered a custom tank-drive competition robot. Led electrical systems integration, wiring the RoboRIO control system and CAN bus network. Conducted extensive hardware-in-the-loop testing, actively diagnosing and resolving complex Java/WPILib software-to-hardware communication issues under strict competition deadlines.",
+    description: "Co-built a custom tank-drive competition robot for the 2023 FRC season. Managed the electrical layout, wiring the RoboRIO control board, power distribution, and CAN bus network. Ran shop testing to isolate and fix Java/WPILib software-to-hardware communication issues prior to competition matches.",
     image: "/projects/2023.jpg",
     stack: ["Java", "WPILib", "RoboRIO", "CAN Bus", "Systems Integration", "Drivetrain Mechanics"]
   },
@@ -19,7 +19,7 @@ const projects = [
     slug: "frc-2024-robot",
     title: "2024 FRC Robot: Swerve Architecture & Kinetic Systems",
     timeline: "2024",
-    description: "Served as Strategy Lead and core systems integrator for a highly complex competition robot. Spearheaded the mechanical and electrical transition to the team's first swerve drive and brushless motor architecture, and co-engineered a custom dual-flywheel shooter system for high-velocity scoring. Navigated strict weight constraints while routing advanced pneumatics and Limelight vision-tracking hardware. Conducted post-competition root-cause analysis on critical power delivery failures. Recognized as a FIRST Dean's List Semi-Finalist for outstanding technical leadership.",
+    description: "Served as competition driver and strategy lead while transitioning the robot to a custom swerve drive and brushless motor setup. Co-engineered a dual-flywheel intake/shooter mechanism, integrated pneumatics and Limelight vision hardware under strict weight limits, and ran root-cause post-match testing on power delivery failures. Named a 2024 FIRST Dean's List Semi-Finalist.",
     image: "/projects/2024.jpg",
     stack: ["Swerve Drive Mechanics", "Dual-Flywheel Systems", "Brushless Motors", "Competitive Strategy", "Root-Cause Analysis", "Dean's List Semi-Finalist"]
   },
@@ -28,16 +28,16 @@ const projects = [
     slug: "frc-2025-robot",
     title: "2025 FRC Robot: High-Density Packaging & CNC Fabrication",
     timeline: "2025",
-    description: "Spearheaded the mechanical fabrication of a multi-stage elevator system designed to actuate a differential claw for precise game-piece manipulation. Expanded the team's in-house manufacturing capabilities by operating a Carvera CNC mill to machine custom precision components. To solve severe chassis space constraints, I architected a custom vertical electronics panel and engineered a secure under-carriage wire-routing system for primary power delivery. Integrated next-generation brushless actuators (Kraken X60 and NEO Vortex), successfully diagnosing a critical firmware logic issue regarding velocity-acceleration dependencies during a rigorous debugging sprint. Contributions helped secure the FIRST Imagery and Sustainability Awards.",
+    description: "Fabricated a multi-stage elevator system and differential claw mechanism, operating a Carvera CNC mill to machine custom aluminum and polycarbonate parts. Designed a high-density vertical electronics panel and under-carriage wire routing to solve tight chassis space constraints. Integrated Kraken X60 and NEO Vortex actuators, resolving motor velocity/acceleration firmware logic during fast-turnaround pit repairs. Co-received the FIRST Imagery and Sustainability Awards.",
     image: "/projects/2025.jpg",
-    stack: ["CNC Machining (Carvera)", "CAD/CAM", "Elevator Mechanics", "Spatial Architecture", "High-Density Wiring", "Kraken X60 Motors", "Firmware Troubleshooting"]
+    stack: ["CNC Machining (Carvera)", "CAD/CAM", "Elevator Mechanics", "High-Density Wiring", "Driver", "Firmware Troubleshooting"]
   },
   {
     id: "04",
     slug: "fsae-aero-package",
     title: "Carbon Fiber Aerodynamics & Composite Manufacturing",
     timeline: "2025 – Present",
-    description: "Engineered and manufactured a comprehensive custom aerodynamic package, fabricating multi-element front/rear wings, side diffusers, and the primary nose cone. Executed complex composite manufacturing workflows utilizing segmented 3D-printed molds, wet lay-ups, and vacuum bagging. Diagnosed structural rigidity issues in early rear-side plate iterations, successfully resolving flex by integrating specialized core materials. Utilized SolidWorks to design custom wing mounting inserts. Operated water jet, CO2, and fiber laser cutters for precision metal and polycarbonate fabrication. Currently spearheading the team's transition to large-format CNC-machined foam molds for next-generation aero development.",
+    description: "Designed molds in SolidWorks and manufactured carbon fiber aero components, including multi-element front and rear wings, side diffusers, and the front nose cone. Applied vacuum-assisted wet lay-ups, added structural core materials to eliminate side-plate flexing, and cut metal and polycarbonate hardware on water jet and fiber/CO2 lasers. Led the move toward CNC-machined foam molds for team production.",
     image: "/projects/FSAE.jpg?v=3",
     stack: ["Carbon Fiber Composites", "Vacuum Bagging", "SolidWorks", "Water Jet Machining", "Laser Cutting (Fiber & CO2)", "Structural Cores", "3D-Printed Tooling", "CNC Machining"]
   },
@@ -46,9 +46,9 @@ const projects = [
     slug: "hero-chair",
     title: "Hero Chair: AR & Brain-Computer Interface Wheelchair",
     timeline: "2023 - 2024",
-    description: "Co-founded the team, conceptualized the core architecture, and led the physical fabrication of an omnidirectional wheelchair designed for quadriplegic users. Engineered two distinct hardware iterations: a rapid 3-day proof-of-concept, followed by a refined, professional-grade chassis built over two weeks for a live national presentation in Toronto. Integrated robust COTS swerve modules with a custom Python/JSON software bridge, successfully translating spatial vector data from a Microsoft HoloLens 2 (eye-tracking) and Muse headband (EEG) into real-time drivetrain kinematics. The project was awarded both 2nd Place and Fan Favorite.",
+    description: "Co-founded the project and built the physical frame for an omnidirectional wheelchair aimed at quadriplegic accessibility. Fabricated two hardware builds—a 3-day prototype followed by a final chassis for national demonstration in Toronto. Won 2nd Place nationally and the Fan Favorite award.",
     image: "/projects/Samsung Chair.jpeg",
-    stack: ["Hardware Iteration", "Microsoft HoloLens 2 (AR)", "Muse Headband (BCI)", "Swerve Drive Kinematics", "Python", "JSON Data Pipelines", "Mechanical Fabrication", "Product Ideation"]
+    stack: ["Hardware Iteration", "Microsoft HoloLens 2", "Muse Headband", "Swerve Drive", "Mechanical Fabrication", "Product Ideation"]
   }
 ];
 
@@ -104,24 +104,24 @@ export default function ProjectsPage() {
         {/* Project Index */}
         <div className="flex flex-col gap-28 pb-40 mt-12">
           {projects.map((project, index) => (
-            <div 
-              key={project.id} 
+            <div
+              key={project.id}
               className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
             >
               {/* Image Column */}
               {project.slug === 'fsae-aero-package' ? (
-                <div 
+                <div
                   className={`relative aspect-[4/3] w-full rounded-2xl border border-white/10 bg-white/5 overflow-hidden group shadow-lg ${index % 2 === 1 ? 'lg:order-last' : ''}`}
                 >
                   {/* Accent line on hover */}
                   <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#FF4D00] origin-left scale-x-0 transition-transform duration-700 ease-out group-hover:scale-x-100 z-20" />
-                  
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105 opacity-80 group-hover:opacity-100" 
+
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105 opacity-80 group-hover:opacity-100"
                   />
-                  
+
                   {/* Subtle dark overlay that fades on hover */}
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
                 </div>
@@ -130,16 +130,16 @@ export default function ProjectsPage() {
                   <div className="relative inline-block rounded-2xl border border-white/10 bg-[#0e0e0e] overflow-hidden group shadow-2xl transition-all duration-500 hover:border-white/25">
                     {/* Accent line on hover */}
                     <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#FF4D00] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100 z-20" />
-                    
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className={`w-auto h-auto ${project.slug === 'frc-2024-robot' ? 'max-h-[540px] md:max-h-[580px]' : 'max-h-[420px]'} max-w-full object-contain block rounded-2xl transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100`} 
+
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className={`w-auto h-auto ${project.slug === 'frc-2024-robot' ? 'max-h-[540px] md:max-h-[580px]' : 'max-h-[420px]'} max-w-full object-contain block rounded-2xl transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100`}
                     />
                   </div>
                 </div>
               )}
-              
+
               {/* Text Column */}
               <div className={`flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-first' : ''}`}>
                 <div className="flex items-center gap-4 mb-3">
@@ -151,20 +151,20 @@ export default function ProjectsPage() {
                     {project.timeline}
                   </span>
                 </div>
-                
+
                 <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#F5F5F5] mb-6">
                   {project.title}
                 </h2>
-                
+
                 <p className="text-base md:text-lg leading-relaxed text-white/50 mb-8">
                   {project.description}
                 </p>
-                
+
                 {/* Tech stack badges */}
                 <div className="flex flex-wrap gap-2">
                   {project.stack.map(tech => (
-                    <span 
-                      key={tech} 
+                    <span
+                      key={tech}
                       className="text-[0.7rem] tracking-[0.05em] uppercase text-[#FF4D00] border border-[#FF4D00]/20 bg-[#FF4D00]/5 px-4 py-2 rounded-full font-medium"
                     >
                       {tech}
