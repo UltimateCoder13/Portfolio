@@ -6,15 +6,15 @@ export function Experience() {
       role: "Computer Engineering-Nanoscale System Design",
       company: "University of Alberta",
       date: "Class of 2029",
-      description: "Currently pursuing an engineering degree in computer engineeringA specialized computer engineering degree bridging physical engineering with software systems, with an emphasis on microelectronics and integrated circuit design. Relevant coursework includes Multivariable Calculus, Engineering Mechanics, Differential Equations, and Computer Programming. Relevant coursework includes Multivariable Calculus, Engineering Mechanics, Differential Equations, and Computer Programming.",
-      skills: ["Python", "HTML/CSS/JS", "SolidWorks", "Fusion 360", "C++"],
+      description: "Currently pursuing an engineering degree in computer engineering. A specialized computer engineering degree bridges the physical engineering with software systems, with an emphasis on microelectronics and integrated circuit design. Relevant coursework includes Multivariable Calculus, Engineering Mechanics, Differential Equations, and Computer Programming.",
+      skills: ["Python", "HTML/CSS/JS", "C++"],
     },
     {
       role: "Aero Sub-Team Member",
       company: "University of Alberta Formula Racing Team",
       date: "Sept 2025 — Present",
       description: "Designing high-performance aerodynamic components and structural brackets using Solidworks, with a focus on CFD analysis and composite material fabrication.",
-      skills: ["SolidWorks", "CAD", "Composites", "Manufacturing"],
+      skills: ["SolidWorks", "Composites", "Manufacturing"],
     },
     {
       role: "Co-Founder & Build Lead",
