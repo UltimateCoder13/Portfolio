@@ -1,15 +1,28 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Particles } from "@/components/ui/particles";
 import CustomCursor from "@/components/CustomCursor";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const projects = [
+interface ProjectItem {
+  id: string;
+  slug: string;
+  title: string;
+  timeline: string;
+  description: string;
+  image?: string;
+  images?: string[];
+  stack: string[];
+}
+
+const projects: ProjectItem[] = [
   {
     id: "01",
     slug: "frc-2023-robot",
-    title: "FRC Competitive Robot: Systems & Drivetrain",
-    timeline: "2022 – 2023",
+    title: "2023 FRC Robot: Sparky",
+    timeline: "2023",
     description: "Co-built a custom tank-drive competition robot for the 2023 FRC season. Managed the electrical layout, wiring the RoboRIO control board, power distribution, and CAN bus network. Ran shop testing to isolate and fix Java/WPILib software-to-hardware communication issues prior to competition matches.",
     image: "/projects/2023.jpg",
     stack: ["Java", "WPILib", "RoboRIO", "CAN Bus", "Systems Integration", "Drivetrain Mechanics"]
@@ -17,7 +30,7 @@ const projects = [
   {
     id: "02",
     slug: "frc-2024-robot",
-    title: "2024 FRC Robot: Swerve Architecture & Kinetic Systems",
+    title: "2024 FRC Robot: Sparky 2",
     timeline: "2024",
     description: "Served as competition driver and strategy lead while transitioning the robot to a custom swerve drive and brushless motor setup. Co-engineered a dual-flywheel intake/shooter mechanism, integrated pneumatics and Limelight vision hardware under strict weight limits, and ran root-cause post-match testing on power delivery failures. Named a 2024 FIRST Dean's List Semi-Finalist.",
     image: "/projects/2024.jpg",
@@ -26,17 +39,17 @@ const projects = [
   {
     id: "03",
     slug: "frc-2025-robot",
-    title: "2025 FRC Robot: High-Density Packaging & CNC Fabrication",
+    title: "2025 FRC Robot: Triton",
     timeline: "2025",
-    description: "Fabricated a multi-stage elevator system and differential claw mechanism, operating a Carvera CNC mill to machine custom aluminum and polycarbonate parts. Designed a high-density vertical electronics panel and under-carriage wire routing to solve tight chassis space constraints. Integrated Kraken X60 and NEO Vortex actuators, resolving motor velocity/acceleration firmware logic during fast-turnaround pit repairs. Co-received the FIRST Imagery and Sustainability Awards.",
+    description: "Fabricated a multi-stage elevator system and differential claw mechanism, operating a Carvera CNC mill to machine custom aluminum and polycarbonate parts. Designed a high-density vertical electronics panel and under-carriage wire routing to solve tight chassis space constraints. Integrated Kraken X60 and NEO Vortex actuators, resolving motor velocity/acceleration firmware logic during fast-turnaround pit repairs. Received the FIRST Imagery and Sustainability Award.",
     image: "/projects/2025.jpg",
     stack: ["CNC Machining (Carvera)", "CAD/CAM", "Elevator Mechanics", "High-Density Wiring", "Driver", "Firmware Troubleshooting"]
   },
   {
     id: "04",
     slug: "fsae-aero-package",
-    title: "Carbon Fiber Aerodynamics & Composite Manufacturing",
-    timeline: "2025 – Present",
+    title: "FSAE Car: UA 26",
+    timeline: "2025 – 2026",
     description: "Designed molds in SolidWorks and manufactured carbon fiber aero components, including multi-element front and rear wings, side diffusers, and the front nose cone. Applied vacuum-assisted wet lay-ups, added structural core materials to eliminate side-plate flexing, and cut metal and polycarbonate hardware on water jet and fiber/CO2 lasers. Led the move toward CNC-machined foam molds for team production.",
     image: "/projects/FSAE.jpg?v=3",
     stack: ["Carbon Fiber Composites", "Vacuum Bagging", "SolidWorks", "Water Jet Machining", "Laser Cutting (Fiber & CO2)", "Structural Cores", "3D-Printed Tooling", "CNC Machining"]
@@ -44,13 +57,110 @@ const projects = [
   {
     id: "05",
     slug: "hero-chair",
-    title: "Hero Chair: AR & Brain-Computer Interface Wheelchair",
+    title: "Hero Chair",
     timeline: "2023 - 2024",
     description: "Co-founded the project and built the physical frame for an omnidirectional wheelchair aimed at quadriplegic accessibility. Fabricated two hardware builds—a 3-day prototype followed by a final chassis for national demonstration in Toronto. Won 2nd Place nationally and the Fan Favorite award.",
     image: "/projects/Samsung Chair.jpeg",
     stack: ["Hardware Iteration", "Microsoft HoloLens 2", "Muse Headband", "Swerve Drive", "Mechanical Fabrication", "Product Ideation"]
+  },
+  {
+    id: "06",
+    slug: "percepta-assistive-wearable",
+    title: "NatHacks: Percepta",
+    timeline: "Nov 2026",
+    description: "Co-built an assistive wearable system with a 6-person team at natHACKS for people with Age-related Macular Degeneration (AMD). Engineered a detachable 3D-printed camera module (Raspberry Pi Zero 2 W, OV5647 camera, 3.7V LiPo) that clips onto existing glasses, paired with an ESP32 haptic wristband driving four vibration motors. Integrated YOLO-World and ROS 2 to stream directional hand-to-object coordinates over UDP, alongside a local Qwen 3.5 2B voice assistant ('Laura'). Scoped to a functional MVP under hardware and multi-device networking constraints.",
+    images: [
+      "/projects/Glasses.png",
+      "/projects/Wrist Haptics.png",
+      "/projects/henock glasses.jpg"
+    ],
+    stack: ["Raspberry Pi Zero 2 W", "ESP32", "YOLO-World", "Qwen 3.5 2B", "3D Printing", "Haptic Feedback"]
   }
 ];
+
+function ProjectSlideshow({ images, title }: { images: string[]; title: string }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (isHovered || images.length <= 1) return;
+
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }, 2000);
+
+    return () => clearInterval(timer);
+  }, [currentIndex, isHovered, images.length]);
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  return (
+    <div
+      className="relative aspect-[4/3] w-full rounded-2xl border border-white/10 bg-[#0e0e0e] overflow-hidden group shadow-2xl transition-all duration-500 hover:border-white/25"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Top accent line on hover */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#FF4D00] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100 z-30" />
+
+      {/* Images container */}
+      <div className="relative w-full h-full">
+        {images.map((imgSrc, idx) => (
+          <img
+            key={imgSrc}
+            src={imgSrc}
+            alt={`${title} - Photo ${idx + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out ${idx === currentIndex
+                ? "opacity-90 group-hover:opacity-100 z-10"
+                : "opacity-0 pointer-events-none z-0"
+              }`}
+          />
+        ))}
+      </div>
+
+      {/* Navigation Arrows */}
+      <button
+        type="button"
+        onClick={prevSlide}
+        aria-label="Previous photo"
+        className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full flex items-center justify-center bg-black/60 backdrop-blur-md border border-white/10 text-white/70 hover:border-[#FF4D00] hover:text-[#FF4D00] transition-colors opacity-90 md:opacity-0 md:group-hover:opacity-100 duration-300"
+      >
+        <ChevronLeft className="w-4 h-4" />
+      </button>
+
+      <button
+        type="button"
+        onClick={nextSlide}
+        aria-label="Next photo"
+        className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full flex items-center justify-center bg-black/60 backdrop-blur-md border border-white/10 text-white/70 hover:border-[#FF4D00] hover:text-[#FF4D00] transition-colors opacity-90 md:opacity-0 md:group-hover:opacity-100 duration-300"
+      >
+        <ChevronRight className="w-4 h-4" />
+      </button>
+
+      {/* Progress Indicators */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10">
+        {images.map((_, idx) => (
+          <button
+            key={idx}
+            type="button"
+            onClick={() => setCurrentIndex(idx)}
+            aria-label={`Go to slide ${idx + 1}`}
+            className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex
+                ? "w-6 bg-[#FF4D00]"
+                : "w-2 bg-white/25 hover:bg-white/50"
+              }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function ProjectsPage() {
   return (
@@ -109,7 +219,11 @@ export default function ProjectsPage() {
               className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
             >
               {/* Image Column */}
-              {project.slug === 'fsae-aero-package' ? (
+              {project.images && project.images.length > 0 ? (
+                <div className={`w-full ${index % 2 === 1 ? 'lg:order-last' : ''}`}>
+                  <ProjectSlideshow images={project.images} title={project.title} />
+                </div>
+              ) : project.slug === 'fsae-aero-package' ? (
                 <div
                   className={`relative aspect-[4/3] w-full rounded-2xl border border-white/10 bg-white/5 overflow-hidden group shadow-lg ${index % 2 === 1 ? 'lg:order-last' : ''}`}
                 >

@@ -71,7 +71,7 @@ const experiences = [
   {
     id: "06",
     dates: "Sept 2022 — June 2025",
-    role: "CoFounder, Strategy Lead, Electrical and Mechanical",
+    role: "CoFounder, Strategy Lead, Electrical and Mechanical Team Member ",
     org: "FRC Team 9277 - Sparkans",
     bullets: [
       "Engineered robust mechanisms and innovative electrical mounting solutions for competition robots.",
