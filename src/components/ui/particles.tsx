@@ -108,9 +108,21 @@ const Particles: React.FC<ParticlesProps> = ({
     }
   };
 
+  const getParticleCount = () => {
+    if (typeof window === "undefined") return quantity;
+    if (window.innerWidth < 640) {
+      return Math.max(15, Math.floor(quantity * 0.35));
+    }
+    if (window.innerWidth < 1024) {
+      return Math.max(25, Math.floor(quantity * 0.6));
+    }
+    return quantity;
+  };
+
   const drawParticles = () => {
     clearContext();
-    for (let i = 0; i < quantity; i++) {
+    const count = getParticleCount();
+    for (let i = 0; i < count; i++) {
       drawCircle(circleParams());
     }
   };
@@ -202,8 +214,8 @@ const Particles: React.FC<ParticlesProps> = ({
   }, [refresh]);
 
   return (
-    <div className={cn("pointer-events-none", className)} ref={canvasContainerRef} aria-hidden="true">
-      <canvas ref={canvasRef} className="size-full" />
+    <div className={cn("pointer-events-none overflow-hidden", className)} ref={canvasContainerRef} aria-hidden="true">
+      <canvas ref={canvasRef} className="size-full pointer-events-none" />
     </div>
   );
 };

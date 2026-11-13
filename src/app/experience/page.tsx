@@ -112,55 +112,55 @@ export default function ExperiencePage() {
       />
 
       {/* Page Container */}
-      <div className="relative z-10 max-w-6xl mx-auto px-8 md:px-12">
+      <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 md:px-12">
         {/* Navigation Header */}
-        <nav className="flex justify-between items-center py-8 border-b border-white/10">
+        <nav className="flex justify-between items-center py-5 sm:py-8 border-b border-white/10 gap-4">
           <Link
             href="/"
-            className="text-sm font-bold tracking-[0.08em] uppercase text-[#F5F5F5] hover:text-[#FF4D00] transition-colors"
+            className="min-h-[44px] inline-flex items-center text-xs sm:text-sm font-bold tracking-[0.08em] uppercase text-[#F5F5F5] hover:text-[#FF4D00] transition-colors"
           >
             ← Back to Portfolio
           </Link>
           <Link
             href="/contact"
-            className="text-sm font-bold tracking-[0.08em] uppercase text-[#F5F5F5] hover:text-[#FF4D00] transition-colors"
+            className="min-h-[44px] inline-flex items-center text-xs sm:text-sm font-bold tracking-[0.08em] uppercase text-[#F5F5F5] hover:text-[#FF4D00] transition-colors shrink-0"
           >
             Let's Talk →
           </Link>
         </nav>
 
         {/* Page Header */}
-        <div className="pt-24 pb-20 flex flex-col items-center text-center max-w-3xl mx-auto">
-          <div className="flex items-center justify-center gap-2 text-xs tracking-[0.15em] uppercase text-[#FF4D00] mb-6">
+        <div className="pt-12 pb-10 md:pt-24 md:pb-20 flex flex-col items-center text-center max-w-3xl mx-auto">
+          <div className="flex items-center justify-center gap-2 text-xs tracking-[0.15em] uppercase text-[#FF4D00] mb-4 sm:mb-6">
             <span className="w-8 h-px bg-[#FF4D00]"></span>
             Career Timeline
             <span className="w-8 h-px bg-[#FF4D00]"></span>
           </div>
-          <h1 className="text-5xl md:text-[5.5rem] font-extrabold leading-[0.95] tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold leading-[0.95] tracking-tight break-words">
             Experience
           </h1>
-          <p className="text-lg leading-relaxed text-white/50 max-w-2xl mt-8">
+          <p className="text-base sm:text-lg leading-relaxed text-white/50 max-w-2xl mt-6 sm:mt-8">
             A timeline of the teams I&apos;ve built with, the problems I&apos;ve
             solved. From competition robotics to national-level engineering challenges.
           </p>
         </div>
 
         {/* Timeline */}
-        <div className="relative pb-32">
+        <div className="relative pb-24 md:pb-32">
           {/* Vertical Spine */}
-          <div className="absolute left-[23px] md:left-[27px] top-0 bottom-0 w-px bg-white/10" />
+          <div className="absolute left-[15px] sm:left-[23px] md:left-[27px] top-0 bottom-0 w-px bg-white/10" />
 
           {experiences.map((exp) => (
-            <div key={exp.id} className="group relative pl-16 md:pl-20 pb-16 last:pb-0">
+            <div key={exp.id} className="group relative pl-9 sm:pl-16 md:pl-20 pb-10 sm:pb-16 last:pb-0">
               {/* Timeline Node */}
-              <div className="absolute left-[14px] md:left-[18px] top-1 z-10">
+              <div className="absolute left-[6px] sm:left-[14px] md:left-[18px] top-1 z-10">
                 <div className="w-[18px] h-[18px] rounded-full border-2 border-white/20 bg-[#0a0a0a] flex items-center justify-center transition-all duration-300 group-hover:border-[#FF4D00] group-hover:shadow-[0_0_12px_rgba(255,77,0,0.4)]">
                   <div className="w-[6px] h-[6px] rounded-full bg-white/20 transition-colors duration-300 group-hover:bg-[#FF4D00]" />
                 </div>
               </div>
 
               {/* Experience Card */}
-              <div className="relative bg-[#0a0a0a] border border-white/10 p-8 transition-all duration-500 overflow-hidden group-hover:border-white/20 rounded-lg">
+              <div className="relative bg-[#0a0a0a] border border-white/10 p-5 sm:p-6 md:p-8 transition-all duration-500 overflow-hidden group-hover:border-white/20 rounded-lg">
                 {/* Accent bar (top) */}
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#FF4D00] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
 
@@ -168,15 +168,15 @@ export default function ExperiencePage() {
                 <div className="absolute top-0 left-0 w-[3px] h-0 bg-[#FF4D00] transition-all duration-400 group-hover:h-full" />
 
                 {/* Header Row */}
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-6">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4 sm:mb-6">
                   <div>
-                    <div className="text-[0.7rem] tracking-[0.15em] uppercase text-white/35 mb-2 transition-colors duration-300 group-hover:text-[#FF4D00]">
+                    <div className="text-[0.65rem] sm:text-[0.7rem] tracking-[0.15em] uppercase text-white/35 mb-1.5 sm:mb-2 transition-colors duration-300 group-hover:text-[#FF4D00]">
                       {exp.dates}
                     </div>
-                    <h2 className="text-xl md:text-2xl font-bold tracking-tight transition-colors duration-300 group-hover:text-[#F5F5F5]">
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight transition-colors duration-300 group-hover:text-[#F5F5F5] break-words">
                       {exp.role}
                     </h2>
-                    <div className="text-sm text-white/50 mt-1 font-medium tracking-wide">
+                    <div className="text-xs sm:text-sm text-white/50 mt-1 font-medium tracking-wide">
                       {exp.org}
                     </div>
                   </div>
@@ -188,13 +188,13 @@ export default function ExperiencePage() {
                 </div>
 
                 {/* Bullets */}
-                <ul className="flex flex-col gap-3">
+                <ul className="flex flex-col gap-2.5 sm:gap-3">
                   {exp.bullets.map((bullet, bIdx) => (
-                    <li key={bIdx} className="flex items-start gap-3">
-                      <span className="text-[#FF4D00]/40 mt-[7px] shrink-0 transition-colors duration-300 group-hover:text-[#FF4D00]">
+                    <li key={bIdx} className="flex items-start gap-2.5 sm:gap-3">
+                      <span className="text-[#FF4D00]/40 mt-[5px] sm:mt-[7px] shrink-0 transition-colors duration-300 group-hover:text-[#FF4D00]">
                         ▸
                       </span>
-                      <span className="text-[0.95rem] leading-relaxed text-white/50 transition-colors duration-300 group-hover:text-white/75">
+                      <span className="text-[0.88rem] sm:text-[0.95rem] leading-relaxed text-white/50 transition-colors duration-300 group-hover:text-white/75">
                         {bullet}
                       </span>
                     </li>
@@ -203,9 +203,9 @@ export default function ExperiencePage() {
 
                 {/* Skill Tags — Dynamically mapped from the object */}
                 {exp.skills && exp.skills.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-white/5">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-4 sm:mt-6 pt-4 sm:pt-5 border-t border-white/5">
                     {exp.skills.map((skill) => (
-                      <span key={skill} className="text-[0.72rem] tracking-[0.04em] text-white/40 bg-white/5 border border-white/8 px-2.5 py-1 rounded-sm transition-colors duration-300 group-hover:text-white/60 group-hover:border-white/15">
+                      <span key={skill} className="text-[0.68rem] sm:text-[0.72rem] tracking-[0.04em] text-white/40 bg-white/5 border border-white/8 px-2 sm:px-2.5 py-1 rounded-sm transition-colors duration-300 group-hover:text-white/60 group-hover:border-white/15">
                         {skill}
                       </span>
                     ))}

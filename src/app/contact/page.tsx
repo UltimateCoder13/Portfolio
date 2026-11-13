@@ -36,7 +36,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#050505] text-[#F5F5F5] selection:bg-[#FF4D00] selection:text-white flex flex-col px-8 py-8 md:py-12 relative overflow-hidden">
+    <main className="min-h-screen bg-[#050505] text-[#F5F5F5] selection:bg-[#FF4D00] selection:text-white flex flex-col px-5 sm:px-8 py-6 sm:py-8 md:py-12 relative overflow-hidden">
       <CustomCursor />
       <Particles
         className="fixed inset-0 z-0 opacity-50 pointer-events-none"
@@ -50,29 +50,29 @@ export default function ContactPage() {
 
       {/* Minimalist Header */}
       <nav className="w-full max-w-7xl mx-auto flex justify-between items-center z-10">
-        <Link href="/" className="text-2xl font-bold tracking-tighter uppercase group flex items-center gap-4">
+        <Link href="/" className="min-h-[44px] inline-flex items-center text-lg sm:text-2xl font-bold tracking-tighter uppercase group gap-3 sm:gap-4">
           <span className="text-white/50 group-hover:-translate-x-2 transition-transform duration-300">←</span>
           Back to Portfolio
         </Link>
       </nav>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col md:flex-row gap-16 md:gap-24 max-w-7xl mx-auto w-full pt-24 md:pt-32 z-10">
+      <div className="flex-1 flex flex-col md:flex-row gap-10 sm:gap-16 md:gap-24 max-w-7xl mx-auto w-full pt-12 sm:pt-20 md:pt-32 z-10">
         
         {/* Left Side: Massive Typography */}
-        <div className="flex-1 flex flex-col gap-8">
-          <h1 className="text-[15vw] md:text-[8vw] leading-[0.85] font-bold tracking-tighter uppercase">
+        <div className="flex-1 flex flex-col gap-6 sm:gap-8">
+          <h1 className="text-5xl sm:text-7xl md:text-[8vw] leading-[0.85] font-bold tracking-tighter uppercase break-words">
             Let's<br />
             <span className="text-[#FF4D00]">Talk.</span>
           </h1>
-          <p className="text-white/50 text-lg md:text-xl max-w-md font-medium leading-relaxed mt-4">
+          <p className="text-white/50 text-base sm:text-lg md:text-xl max-w-md font-medium leading-relaxed mt-2 sm:mt-4">
             Have a system architecture problem to solve? A robotics project in mind? Or just want to connect? Drop a message below.
           </p>
         </div>
 
         {/* Right Side: Premium Form */}
         <div className="flex-1 max-w-xl w-full">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-12">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-8 sm:gap-12">
             
             {/* Input Group: Name */}
             <div className="relative group">
@@ -85,7 +85,7 @@ export default function ContactPage() {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full bg-transparent border-b border-white/20 py-4 text-xl md:text-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF4D00] transition-colors rounded-none"
+                className="w-full bg-transparent border-b border-white/20 py-3 sm:py-4 text-lg md:text-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF4D00] transition-colors rounded-none"
                 placeholder="John Doe"
               />
             </div>
@@ -101,7 +101,7 @@ export default function ContactPage() {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full bg-transparent border-b border-white/20 py-4 text-xl md:text-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF4D00] transition-colors rounded-none"
+                className="w-full bg-transparent border-b border-white/20 py-3 sm:py-4 text-lg md:text-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF4D00] transition-colors rounded-none"
                 placeholder="john@company.com"
               />
             </div>
@@ -117,7 +117,7 @@ export default function ContactPage() {
                 rows={4}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full bg-transparent border-b border-white/20 py-4 text-xl md:text-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF4D00] transition-colors resize-none rounded-none"
+                className="w-full bg-transparent border-b border-white/20 py-3 sm:py-4 text-lg md:text-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF4D00] transition-colors resize-none rounded-none"
                 placeholder="Tell me about your project..."
               ></textarea>
             </div>
@@ -126,7 +126,7 @@ export default function ContactPage() {
             <button 
               type="submit"
               disabled={isSubmitting}
-              className="mt-8 px-8 py-5 border border-white/20 rounded-full text-sm font-bold uppercase tracking-[0.2em] transition-all duration-300 hover:border-[#FF4D00] hover:text-[#FF4D00] hover:bg-[#FF4D00]/10 w-fit disabled:opacity-50 disabled:cursor-not-allowed group flex items-center gap-4"
+              className="mt-4 sm:mt-8 px-8 py-4 sm:py-5 border border-white/20 rounded-full text-xs sm:text-sm font-bold uppercase tracking-[0.2em] transition-all duration-300 hover:border-[#FF4D00] hover:text-[#FF4D00] hover:bg-[#FF4D00]/10 w-full sm:w-fit min-h-[44px] disabled:opacity-50 disabled:cursor-not-allowed group flex items-center justify-center gap-4"
             >
               {isSubmitting ? "Sending..." : "Send Message"}
               {!isSubmitting && <span className="transition-transform duration-300 group-hover:translate-x-2">↗</span>}

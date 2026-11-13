@@ -33,17 +33,17 @@ export function Experience() {
   ];
 
   return (
-    <section id="experience" className="relative py-32 px-8 max-w-7xl mx-auto w-full z-10">
-      <div className="mb-16 border-b border-white/10 pb-8 flex flex-col gap-2">
-        <Link href="/experience" className="group flex w-full justify-between items-center">
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase text-[#F5F5F5] transition-colors duration-300 group-hover:text-[#FF4D00]">
+    <section id="experience" className="relative py-16 md:py-32 px-5 sm:px-8 md:px-12 max-w-7xl mx-auto w-full z-10">
+      <div className="mb-10 sm:mb-16 border-b border-white/10 pb-6 sm:pb-8 flex flex-col gap-2">
+        <Link href="/experience" className="group flex w-full justify-between items-center min-h-[44px]">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter uppercase text-[#F5F5F5] transition-colors duration-300 group-hover:text-[#FF4D00]">
             Experience
           </h2>
-          <span className="text-3xl md:text-5xl transition-all duration-300 transform -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[#FF4D00] text-[#F5F5F5]">
+          <span className="text-2xl sm:text-3xl md:text-5xl transition-all duration-300 transform -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[#FF4D00] text-[#F5F5F5]">
             →
           </span>
         </Link>
-        <span className="text-[#FF4D00] text-sm font-medium tracking-[0.2em] uppercase">
+        <span className="text-[#FF4D00] text-xs sm:text-sm font-medium tracking-[0.2em] uppercase">
           Career & Education
         </span>
       </div>
@@ -52,27 +52,27 @@ export function Experience() {
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className="group relative grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 py-12 border-b border-white/10 transition-colors duration-500 hover:bg-white/[0.02] -mx-8 px-8"
+            className="group relative grid grid-cols-1 md:grid-cols-[260px_1fr] lg:grid-cols-[300px_1fr] gap-6 md:gap-8 py-8 sm:py-10 md:py-12 border-b border-white/10 transition-colors duration-500 hover:bg-white/[0.02] -mx-4 sm:-mx-6 md:-mx-8 px-4 sm:px-6 md:px-8 rounded-xl"
           >
             {/* Left Column: Date & Company */}
-            <div className="flex flex-col gap-2 pt-2">
-              <span className="text-sm font-bold tracking-widest text-white/40 uppercase">{exp.date}</span>
-              <span className="text-lg font-medium text-[#FF4D00]">{exp.company}</span>
+            <div className="flex flex-col gap-1.5 sm:gap-2 pt-1 md:pt-2">
+              <span className="text-xs sm:text-sm font-bold tracking-widest text-white/40 uppercase">{exp.date}</span>
+              <span className="text-base sm:text-lg font-medium text-[#FF4D00]">{exp.company}</span>
             </div>
 
             {/* Right Column: Role, Description, Skills */}
-            <div className="flex flex-col gap-4">
-              <h3 className="text-2xl md:text-3xl font-medium tracking-tight text-[#F5F5F5]">
+            <div className="flex flex-col gap-3 sm:gap-4">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-[#F5F5F5] break-words">
                 {exp.role}
               </h3>
               <p className="text-white/60 leading-relaxed max-w-2xl text-sm md:text-base">
                 {exp.description}
               </p>
-              <div className="flex flex-wrap gap-3 mt-4">
+              <div className="flex flex-wrap gap-2 sm:gap-3 mt-2 sm:mt-4">
                 {exp.skills.map((skill, sIndex) => (
                   <span
                     key={sIndex}
-                    className="px-4 py-1.5 rounded-full border border-white/10 text-xs font-medium tracking-wider text-white/70 uppercase transition-colors duration-300 group-hover:border-[#FF4D00]/50 group-hover:text-[#FF4D00]"
+                    className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full border border-white/10 text-[0.7rem] sm:text-xs font-medium tracking-wider text-white/70 uppercase transition-colors duration-300 group-hover:border-[#FF4D00]/50 group-hover:text-[#FF4D00]"
                   >
                     {skill}
                   </span>

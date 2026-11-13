@@ -19,11 +19,24 @@ export default function CustomCursor() {
   const ringY = useSpring(mouseY, ringSpringConfig);
 
   useEffect(() => {
-    // Check for touch / coarse pointer devices
-    if (window.matchMedia("(pointer: coarse)").matches) {
-      setIsTouchDevice(true);
-      return;
-    }
+    // Check for touch / coarse pointer devices or non-fine pointer
+    const checkPointer = () => {
+      const isCoarse = window.matchMedia("(pointer: coarse)").matches;
+      const cannotHover = !window.matchMedia("(hover: hover)").matches;
+      const isSmallScreen = window.innerWidth < 1024;
+      if (isCoarse || cannotHover || isSmallScreen) {
+        setIsTouchDevice(true);
+        return true;
+      }
+      setIsTouchDevice(false);
+      return false;
+    };
+
+    if (checkPointer()) return;
+
+    const handleResize = () => {
+      checkPointer();
+    };
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
@@ -59,6 +72,7 @@ export default function CustomCursor() {
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
+    window.addEventListener("resize", handleResize, { passive: true });
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("mousedown", handleMouseDown, { passive: true });
     window.addEventListener("mouseup", handleMouseUp, { passive: true });
@@ -67,6 +81,7 @@ export default function CustomCursor() {
     document.addEventListener("mouseenter", handleMouseEnter);
 
     return () => {
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
@@ -80,7 +95,7 @@ export default function CustomCursor() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden transition-opacity duration-200"
+      className="hidden lg:block pointer-events-none fixed inset-0 z-[99999] overflow-hidden transition-opacity duration-200"
       style={{ opacity: isVisible ? 1 : 0 }}
       aria-hidden="true"
     >

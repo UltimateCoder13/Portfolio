@@ -20,54 +20,54 @@ export default function AboutPage() {
       />
 
       {/* Page Container */}
-      <div className="relative z-10 max-w-6xl mx-auto px-8 md:px-12">
+      <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 md:px-12">
 
         {/* Navigation Header */}
-        <nav className="flex justify-between items-center py-8 border-b border-white/10">
+        <nav className="flex justify-between items-center py-5 sm:py-8 border-b border-white/10 gap-4">
           <Link
             href="/"
-            className="text-sm font-bold tracking-[0.08em] uppercase text-[#F5F5F5] hover:text-[#FF4D00] transition-colors"
+            className="min-h-[44px] inline-flex items-center text-xs sm:text-sm font-bold tracking-[0.08em] uppercase text-[#F5F5F5] hover:text-[#FF4D00] transition-colors"
           >
             ← Back to Portfolio
           </Link>
           <Link
             href="/contact"
-            className="text-sm font-bold tracking-[0.08em] uppercase text-[#F5F5F5] hover:text-[#FF4D00] transition-colors"
+            className="min-h-[44px] inline-flex items-center text-xs sm:text-sm font-bold tracking-[0.08em] uppercase text-[#F5F5F5] hover:text-[#FF4D00] transition-colors shrink-0"
           >
             Let's Talk →
           </Link>
         </nav>
 
         {/* HERO SECTION */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 items-center py-12 sm:py-16 md:py-24">
           <div>
-            <div className="flex items-center gap-2 text-xs tracking-[0.15em] uppercase text-[#FF4D00] mb-6">
+            <div className="flex items-center gap-2 text-xs tracking-[0.15em] uppercase text-[#FF4D00] mb-4 sm:mb-6">
               <span className="w-8 h-px bg-[#FF4D00]"></span>
               Engineering Candidate
             </div>
-            <h1 className="text-5xl md:text-[5.5rem] font-extrabold leading-[0.95] tracking-tight mb-8">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold leading-[0.95] tracking-tight mb-6 sm:mb-8 break-words">
               Building<br />
               <em className="not-italic text-transparent [-webkit-text-stroke:1px_rgba(240,237,230,0.4)]">things</em><br />
               that last.
             </h1>
-            <p className="text-lg leading-relaxed text-white/65 max-w-md">
+            <p className="text-base sm:text-lg leading-relaxed text-white/65 max-w-md">
               I am a candidate for a B.S. in Engineering with a passion for <strong>precision design</strong> and rapid prototyping. From fabricating carbon fiber aero packages to engineering brain-controlled mobility solutions, I bridge the gap between concept and reality.
             </p>
-            <div className="flex flex-wrap gap-4 mt-10">
-              <Link href="/contact" className="inline-flex items-center gap-2 bg-[#FF4D00] text-white text-sm font-medium tracking-[0.04em] px-7 py-3.5 transition-all hover:bg-[#d4521f] hover:-translate-y-px">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mt-8 sm:mt-10">
+              <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#FF4D00] text-white text-xs sm:text-sm font-medium tracking-[0.04em] px-6 sm:px-7 py-3.5 transition-all hover:bg-[#d4521f] hover:-translate-y-px min-h-[44px] w-full sm:w-fit">
                 Let's Talk →
               </Link>
-              <a href="/Resume.pdf" download="Dhaya_Srinivasan_Resume.pdf" className="inline-flex items-center gap-2 bg-transparent text-[#F5F5F5] text-sm font-medium tracking-[0.04em] px-7 py-3.5 border border-white/20 transition-all hover:border-white/50 hover:-translate-y-px">
+              <a href="/Resume.pdf" download="Dhaya_Srinivasan_Resume.pdf" className="inline-flex items-center justify-center gap-2 bg-transparent text-[#F5F5F5] text-xs sm:text-sm font-medium tracking-[0.04em] px-6 sm:px-7 py-3.5 border border-white/20 transition-all hover:border-white/50 hover:-translate-y-px min-h-[44px] w-full sm:w-fit">
                 Download CV
               </a>
-              <a href="/Dhaya_Srinivasan_Open_Cover_Letter.pdf" download="Dhaya_Srinivasan_Letter_Of_Intent.pdf" className="inline-flex items-center gap-2 bg-transparent text-[#F5F5F5] text-sm font-medium tracking-[0.04em] px-7 py-3.5 border border-white/20 transition-all hover:border-white/50 hover:-translate-y-px">
+              <a href="/Dhaya_Srinivasan_Open_Cover_Letter.pdf" download="Dhaya_Srinivasan_Letter_Of_Intent.pdf" className="inline-flex items-center justify-center gap-2 bg-transparent text-[#F5F5F5] text-xs sm:text-sm font-medium tracking-[0.04em] px-6 sm:px-7 py-3.5 border border-white/20 transition-all hover:border-white/50 hover:-translate-y-px min-h-[44px] w-full sm:w-fit">
                 Letter of Intent
               </a>
             </div>
           </div>
 
           {/* Portrait Frame */}
-          <div className="relative aspect-[4/5] bg-[#1a1a1a] border border-white/10 overflow-hidden flex flex-col items-center justify-center group rounded-2xl">
+          <div className="relative aspect-[4/5] max-w-[420px] mx-auto md:max-w-none w-full bg-[#1a1a1a] border border-white/10 overflow-hidden flex flex-col items-center justify-center group rounded-2xl">
             {/* Technical Corner (Rounded to match frame) */}
             <div className="absolute top-[-1px] left-[-1px] w-6 h-6 border-t-2 border-l-2 border-[#FF4D00] z-30 rounded-tl-2xl"></div>
 
@@ -92,34 +92,34 @@ export default function AboutPage() {
         </div>
 
         {/* STATS ROW */}
-        <div className="grid grid-cols-3 border-t border-l border-white/10 mb-24">
-          <div className="p-8 border-r border-b border-white/10">
-            <div className="text-4xl md:text-5xl font-extrabold text-[#FF4D00] leading-none mb-2">3+</div>
-            <div className="text-[0.8rem] text-white/45 tracking-[0.06em] uppercase">Years in Robotics</div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 border-t border-l border-white/10 mb-16 sm:mb-24">
+          <div className="p-5 sm:p-6 md:p-8 border-r border-b border-white/10">
+            <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#FF4D00] leading-none mb-2">3+</div>
+            <div className="text-[0.75rem] sm:text-[0.8rem] text-white/45 tracking-[0.06em] uppercase">Years in Robotics</div>
           </div>
-          <div className="p-8 border-r border-b border-white/10">
-            <div className="text-4xl md:text-5xl font-extrabold text-[#FF4D00] leading-none mb-2">4</div>
-            <div className="text-[0.8rem] text-white/45 tracking-[0.06em] uppercase">Major Build Projects</div>
+          <div className="p-5 sm:p-6 md:p-8 border-r border-b border-white/10">
+            <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#FF4D00] leading-none mb-2">4</div>
+            <div className="text-[0.75rem] sm:text-[0.8rem] text-white/45 tracking-[0.06em] uppercase">Major Build Projects</div>
           </div>
-          <div className="p-8 border-r border-b border-white/10">
-            <div className="text-4xl md:text-5xl font-extrabold text-[#FF4D00] leading-none mb-2">2</div>
-            <div className="text-[0.8rem] text-white/45 tracking-[0.06em] uppercase">National Awards</div>
+          <div className="p-5 sm:p-6 md:p-8 border-r border-b border-white/10">
+            <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#FF4D00] leading-none mb-2">2</div>
+            <div className="text-[0.75rem] sm:text-[0.8rem] text-white/45 tracking-[0.06em] uppercase">National Awards</div>
           </div>
         </div>
 
         {/* SKILLS SECTION */}
-        <div className="flex items-end justify-between mb-12 pb-6 border-b border-white/10">
+        <div className="flex items-end justify-between mb-8 sm:mb-12 pb-4 sm:pb-6 border-b border-white/10">
           <div>
-            <div className="text-[0.72rem] tracking-[0.18em] uppercase text-white/35 mb-2">What I work with</div>
-            <h2 className="text-4xl font-extrabold tracking-tight">Skills & Tools</h2>
+            <div className="text-[0.7rem] sm:text-[0.72rem] tracking-[0.18em] uppercase text-white/35 mb-2">What I work with</div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Skills & Tools</h2>
           </div>
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[1px] bg-white/10 border border-white/10 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[1px] bg-white/10 border border-white/10 mb-16 sm:mb-24">
 
           {/* Skill Card 1 */}
-          <div className="bg-[#0a0a0a] p-8 relative group hover:bg-[#111] transition-colors overflow-hidden">
+          <div className="bg-[#0a0a0a] p-5 sm:p-6 md:p-8 relative group hover:bg-[#111] transition-colors overflow-hidden">
             <div className="absolute top-0 left-0 w-[3px] h-0 bg-[#FF4D00] transition-all duration-300 group-hover:h-full"></div>
             <div className="text-[0.7rem] tracking-[0.14em] uppercase text-[#FF4D00] mb-3">Design</div>
             <div className="text-xl font-bold mb-3">CAD & CAM</div>
@@ -128,13 +128,13 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-wrap gap-2 mt-5">
               {["SolidWorks", "Fusion 360", "V-Carve", "OnShape"].map(tool => (
-                <span key={tool} className="text-[0.72rem] tracking-[0.04em] text-white/50 bg-white/5 border border-white/10 px-2.5 py-1">{tool}</span>
+                <span key={tool} className="text-[0.68rem] sm:text-[0.72rem] tracking-[0.04em] text-white/50 bg-white/5 border border-white/10 px-2 sm:px-2.5 py-1">{tool}</span>
               ))}
             </div>
           </div>
 
           {/* Skill Card 2 */}
-          <div className="bg-[#0a0a0a] p-8 relative group hover:bg-[#111] transition-colors overflow-hidden">
+          <div className="bg-[#0a0a0a] p-5 sm:p-6 md:p-8 relative group hover:bg-[#111] transition-colors overflow-hidden">
             <div className="absolute top-0 left-0 w-[3px] h-0 bg-[#FF4D00] transition-all duration-300 group-hover:h-full"></div>
             <div className="text-[0.7rem] tracking-[0.14em] uppercase text-[#FF4D00] mb-3">Fabrication</div>
             <div className="text-xl font-bold mb-3">Prototyping & Manufacturing</div>
@@ -143,13 +143,13 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-wrap gap-2 mt-5">
               {["Carbon Fiber Lay-up", "CNC Milling", "3D Printing", "Laser Cutting"].map(tool => (
-                <span key={tool} className="text-[0.72rem] tracking-[0.04em] text-white/50 bg-white/5 border border-white/10 px-2.5 py-1">{tool}</span>
+                <span key={tool} className="text-[0.68rem] sm:text-[0.72rem] tracking-[0.04em] text-white/50 bg-white/5 border border-white/10 px-2 sm:px-2.5 py-1">{tool}</span>
               ))}
             </div>
           </div>
 
           {/* Skill Card 3 */}
-          <div className="bg-[#0a0a0a] p-8 relative group hover:bg-[#111] transition-colors overflow-hidden">
+          <div className="bg-[#0a0a0a] p-5 sm:p-6 md:p-8 relative group hover:bg-[#111] transition-colors overflow-hidden">
             <div className="absolute top-0 left-0 w-[3px] h-0 bg-[#FF4D00] transition-all duration-300 group-hover:h-full"></div>
             <div className="text-[0.7rem] tracking-[0.14em] uppercase text-[#FF4D00] mb-3">Software</div>
             <div className="text-xl font-bold mb-3">Code & Control</div>
@@ -158,13 +158,13 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-wrap gap-2 mt-5">
               {["Python", "HTML/CSS/JS", "Electronics Integration"].map(tool => (
-                <span key={tool} className="text-[0.72rem] tracking-[0.04em] text-white/50 bg-white/5 border border-white/10 px-2.5 py-1">{tool}</span>
+                <span key={tool} className="text-[0.68rem] sm:text-[0.72rem] tracking-[0.04em] text-white/50 bg-white/5 border border-white/10 px-2 sm:px-2.5 py-1">{tool}</span>
               ))}
             </div>
           </div>
 
           {/* Skill Card 4 */}
-          <div className="bg-[#0a0a0a] p-8 relative group hover:bg-[#111] transition-colors overflow-hidden">
+          <div className="bg-[#0a0a0a] p-5 sm:p-6 md:p-8 relative group hover:bg-[#111] transition-colors overflow-hidden">
             <div className="absolute top-0 left-0 w-[3px] h-0 bg-[#FF4D00] transition-all duration-300 group-hover:h-full"></div>
             <div className="text-[0.7rem] tracking-[0.14em] uppercase text-[#FF4D00] mb-3">Management</div>
             <div className="text-xl font-bold mb-3">Strategy & Leadership</div>
@@ -173,7 +173,7 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-wrap gap-2 mt-5">
               {["Project Planning", "Crisis Management", "Logistics", "Mentorship"].map(tool => (
-                <span key={tool} className="text-[0.72rem] tracking-[0.04em] text-white/50 bg-white/5 border border-white/10 px-2.5 py-1">{tool}</span>
+                <span key={tool} className="text-[0.68rem] sm:text-[0.72rem] tracking-[0.04em] text-white/50 bg-white/5 border border-white/10 px-2 sm:px-2.5 py-1">{tool}</span>
               ))}
             </div>
           </div>

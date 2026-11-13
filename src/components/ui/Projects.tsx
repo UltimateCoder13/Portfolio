@@ -44,13 +44,13 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" className="relative py-32 px-8 max-w-7xl mx-auto w-full" ref={containerRef} onMouseMove={handleMouseMove}>
-      <div className="mb-16 border-b border-white/10 pb-8">
-        <Link href="/projects" className="group flex w-full justify-between items-center">
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase transition-colors duration-300 group-hover:text-[#FF4D00]">
+    <section id="projects" className="relative py-16 md:py-32 px-5 sm:px-8 md:px-12 max-w-7xl mx-auto w-full" ref={containerRef} onMouseMove={handleMouseMove}>
+      <div className="mb-10 sm:mb-16 border-b border-white/10 pb-6 sm:pb-8">
+        <Link href="/projects" className="group flex w-full justify-between items-center min-h-[44px]">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter uppercase transition-colors duration-300 group-hover:text-[#FF4D00]">
             Projects
           </h2>
-          <span className="text-3xl md:text-5xl transition-all duration-300 transform -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[#FF4D00]">
+          <span className="text-2xl sm:text-3xl md:text-5xl transition-all duration-300 transform -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[#FF4D00]">
             →
           </span>
         </Link>
@@ -59,16 +59,16 @@ export function Projects() {
       <div className="relative flex flex-col w-full">
         {projects.map((project, index) => (
           <Link
-            href={project.link}
+            href="/projects"
             key={index}
-            className="group border-b border-white/10 py-12 flex flex-col md:flex-row justify-between items-start md:items-center relative z-10 hover:text-[#FF4D00] transition-colors duration-500"
+            className="group border-b border-white/10 py-8 sm:py-10 md:py-12 flex flex-col md:flex-row justify-between items-start md:items-center relative z-10 hover:text-[#FF4D00] transition-colors duration-500"
             onMouseEnter={() => setActiveProject(index)}
             onMouseLeave={() => setActiveProject(null)}
           >
-            <h3 className="text-4xl md:text-6xl font-medium tracking-tight mb-4 md:mb-0 transition-transform duration-500 md:group-hover:translate-x-4">
+            <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-3 md:mb-0 transition-transform duration-500 md:group-hover:translate-x-4 break-words">
               {project.title}
             </h3>
-            <div className="flex gap-8 text-sm uppercase tracking-widest text-white/50 group-hover:text-[#FF4D00]/70 transition-colors duration-500">
+            <div className="flex flex-wrap gap-4 sm:gap-8 text-xs sm:text-sm uppercase tracking-widest text-white/50 group-hover:text-[#FF4D00]/70 transition-colors duration-500">
               <span>{project.category}</span>
               <span>{project.year}</span>
             </div>

@@ -20,22 +20,22 @@ export default function Hero() {
 
 
       {/* Main Typography */}
-      <div className="relative z-10 w-full text-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-12 text-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="mb-8 text-xs font-medium uppercase tracking-[0.6em] text-accent/80 sm:text-sm"
+          className="mb-6 sm:mb-8 text-[11px] sm:text-xs md:text-sm font-medium uppercase tracking-[0.25em] sm:tracking-[0.45em] md:tracking-[0.6em] text-accent/80"
         >
           ENGINEERING PORTFOLIO // MMXXVI
         </motion.p>
 
-        <div className="overflow-hidden">
+        <div className="overflow-hidden px-2">
           <motion.h1
             initial={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-            className="relative text-5xl font-bold tracking-tighter text-foreground sm:text-[10vw] leading-[0.8]"
+            className="relative text-4xl sm:text-6xl md:text-[8.5vw] lg:text-[10vw] font-bold tracking-tighter text-foreground leading-[0.9] sm:leading-[0.8] break-words"
           >
             DHAYA SRINIVASAN
           </motion.h1>

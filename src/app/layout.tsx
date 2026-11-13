@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/providers/LenisProvider";
@@ -14,14 +14,20 @@ export const metadata: Metadata = {
   description: "A personal engineering portfolio.",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${spaceGrotesk.variable} antialiased selection:bg-accent selection:text-white`}>
+    <html lang="en" className="dark overflow-x-hidden" suppressHydrationWarning>
+      <body className={`${spaceGrotesk.variable} antialiased selection:bg-accent selection:text-white overflow-x-hidden w-full max-w-full`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -30,7 +36,7 @@ export default function RootLayout({
         >
           <LenisProvider>
             <div className="noise-bg" />
-            <main className="relative z-10">{children}</main>
+            <main className="relative z-10 w-full overflow-x-hidden">{children}</main>
           </LenisProvider>
         </ThemeProvider>
       </body>

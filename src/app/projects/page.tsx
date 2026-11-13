@@ -81,13 +81,14 @@ const projects: ProjectItem[] = [
 function ProjectSlideshow({ images, title }: { images: string[]; title: string }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   useEffect(() => {
     if (isHovered || images.length <= 1) return;
 
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-    }, 2000);
+    }, 4000);
 
     return () => clearInterval(timer);
   }, [currentIndex, isHovered, images.length]);
@@ -100,11 +101,29 @@ function ProjectSlideshow({ images, title }: { images: string[]; title: string }
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (diff > 45) {
+      nextSlide();
+    } else if (diff < -45) {
+      prevSlide();
+    }
+    setTouchStartX(null);
+  };
+
   return (
     <div
-      className="relative aspect-[4/3] w-full rounded-2xl border border-white/10 bg-[#0e0e0e] overflow-hidden group shadow-2xl transition-all duration-500 hover:border-white/25"
+      className="relative aspect-[4/3] max-h-[300px] sm:max-h-[420px] w-full rounded-2xl border border-white/10 bg-[#0e0e0e] overflow-hidden group shadow-2xl transition-all duration-500 hover:border-white/25 mx-auto touch-pan-y"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       {/* Top accent line on hover */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#FF4D00] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100 z-30" />
@@ -116,45 +135,47 @@ function ProjectSlideshow({ images, title }: { images: string[]; title: string }
             key={imgSrc}
             src={imgSrc}
             alt={`${title} - Photo ${idx + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out ${idx === currentIndex
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out ${
+              idx === currentIndex
                 ? "opacity-90 group-hover:opacity-100 z-10"
                 : "opacity-0 pointer-events-none z-0"
-              }`}
+            }`}
           />
         ))}
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows (Always visible on mobile/tablets, fade in on hover on desktop) */}
       <button
         type="button"
         onClick={prevSlide}
         aria-label="Previous photo"
-        className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full flex items-center justify-center bg-black/60 backdrop-blur-md border border-white/10 text-white/70 hover:border-[#FF4D00] hover:text-[#FF4D00] transition-colors opacity-90 md:opacity-0 md:group-hover:opacity-100 duration-300"
+        className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center bg-black/70 backdrop-blur-md border border-white/15 text-white/80 hover:border-[#FF4D00] hover:text-[#FF4D00] transition-colors opacity-90 lg:opacity-0 lg:group-hover:opacity-100 duration-300 active:scale-95"
       >
-        <ChevronLeft className="w-4 h-4" />
+        <ChevronLeft className="w-5 h-5" />
       </button>
 
       <button
         type="button"
         onClick={nextSlide}
         aria-label="Next photo"
-        className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full flex items-center justify-center bg-black/60 backdrop-blur-md border border-white/10 text-white/70 hover:border-[#FF4D00] hover:text-[#FF4D00] transition-colors opacity-90 md:opacity-0 md:group-hover:opacity-100 duration-300"
+        className="absolute right-2.5 sm:right-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center bg-black/70 backdrop-blur-md border border-white/15 text-white/80 hover:border-[#FF4D00] hover:text-[#FF4D00] transition-colors opacity-90 lg:opacity-0 lg:group-hover:opacity-100 duration-300 active:scale-95"
       >
-        <ChevronRight className="w-4 h-4" />
+        <ChevronRight className="w-5 h-5" />
       </button>
 
       {/* Progress Indicators */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10">
+      <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10">
         {images.map((_, idx) => (
           <button
             key={idx}
             type="button"
             onClick={() => setCurrentIndex(idx)}
             aria-label={`Go to slide ${idx + 1}`}
-            className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              idx === currentIndex
                 ? "w-6 bg-[#FF4D00]"
                 : "w-2 bg-white/25 hover:bg-white/50"
-              }`}
+            }`}
           />
         ))}
       </div>
@@ -178,45 +199,45 @@ export default function ProjectsPage() {
       />
 
       {/* Page Container */}
-      <div className="relative z-10 max-w-6xl mx-auto px-8 md:px-12">
+      <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 md:px-12">
         {/* Navigation Header */}
-        <nav className="flex justify-between items-center py-8 border-b border-white/10">
+        <nav className="flex justify-between items-center py-5 sm:py-8 border-b border-white/10 gap-4">
           <Link
             href="/"
-            className="text-sm font-bold tracking-[0.08em] uppercase text-[#F5F5F5] hover:text-[#FF4D00] transition-colors"
+            className="min-h-[44px] inline-flex items-center text-xs sm:text-sm font-bold tracking-[0.08em] uppercase text-[#F5F5F5] hover:text-[#FF4D00] transition-colors"
           >
             ← Back to Portfolio
           </Link>
           <Link
             href="/contact"
-            className="text-sm font-bold tracking-[0.08em] uppercase text-[#F5F5F5] hover:text-[#FF4D00] transition-colors"
+            className="min-h-[44px] inline-flex items-center text-xs sm:text-sm font-bold tracking-[0.08em] uppercase text-[#F5F5F5] hover:text-[#FF4D00] transition-colors shrink-0"
           >
             Let's Talk →
           </Link>
         </nav>
 
         {/* Page Header */}
-        <div className="pt-24 pb-16">
+        <div className="pt-12 pb-10 md:pt-24 md:pb-16">
           <div className="relative z-10">
-            <div className="flex items-center gap-2 text-xs tracking-[0.15em] uppercase text-[#FF4D00] mb-6">
+            <div className="flex items-center gap-2 text-xs tracking-[0.15em] uppercase text-[#FF4D00] mb-4 sm:mb-6">
               <span className="w-8 h-px bg-[#FF4D00]"></span>
               Featured Work
             </div>
-            <h1 className="text-5xl md:text-[5.5rem] font-extrabold leading-[0.95] tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold leading-[0.95] tracking-tight break-words">
               Projects
             </h1>
-            <p className="text-lg leading-relaxed text-white/50 max-w-xl mt-8">
+            <p className="text-base sm:text-lg leading-relaxed text-white/50 max-w-xl mt-6 sm:mt-8">
               A collection of hardware and software builds, from composite manufacturing to autonomous systems.
             </p>
           </div>
         </div>
 
         {/* Project Index */}
-        <div className="flex flex-col gap-28 pb-40 mt-12">
+        <div className="flex flex-col gap-16 sm:gap-20 md:gap-28 pb-24 md:pb-40 mt-8 md:mt-12">
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+              className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center"
             >
               {/* Image Column */}
               {project.images && project.images.length > 0 ? (
@@ -225,7 +246,7 @@ export default function ProjectsPage() {
                 </div>
               ) : project.slug === 'fsae-aero-package' ? (
                 <div
-                  className={`relative aspect-[4/3] w-full rounded-2xl border border-white/10 bg-white/5 overflow-hidden group shadow-lg ${index % 2 === 1 ? 'lg:order-last' : ''}`}
+                  className={`relative aspect-[4/3] max-h-[300px] sm:max-h-[420px] w-full rounded-2xl border border-white/10 bg-white/5 overflow-hidden group shadow-lg mx-auto ${index % 2 === 1 ? 'lg:order-last' : ''}`}
                 >
                   {/* Accent line on hover */}
                   <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#FF4D00] origin-left scale-x-0 transition-transform duration-700 ease-out group-hover:scale-x-100 z-20" />
@@ -240,7 +261,7 @@ export default function ProjectsPage() {
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
                 </div>
               ) : (
-                <div className={`flex items-center justify-center ${index % 2 === 1 ? 'lg:order-last' : ''}`}>
+                <div className={`flex items-center justify-center w-full ${index % 2 === 1 ? 'lg:order-last' : ''}`}>
                   <div className="relative inline-block rounded-2xl border border-white/10 bg-[#0e0e0e] overflow-hidden group shadow-2xl transition-all duration-500 hover:border-white/25">
                     {/* Accent line on hover */}
                     <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#FF4D00] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100 z-20" />
@@ -248,7 +269,7 @@ export default function ProjectsPage() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className={`w-auto h-auto ${project.slug === 'frc-2024-robot' ? 'max-h-[540px] md:max-h-[580px]' : 'max-h-[420px]'} max-w-full object-contain block rounded-2xl transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100`}
+                      className={`w-auto h-auto max-h-[280px] sm:max-h-[380px] ${project.slug === 'frc-2024-robot' ? 'lg:max-h-[540px]' : 'lg:max-h-[420px]'} max-w-full object-contain block rounded-2xl transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100`}
                     />
                   </div>
                 </div>
@@ -256,7 +277,7 @@ export default function ProjectsPage() {
 
               {/* Text Column */}
               <div className={`flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-first' : ''}`}>
-                <div className="flex items-center gap-4 mb-3">
+                <div className="flex items-center gap-4 mb-2 sm:mb-3">
                   <span className="text-[0.7rem] tracking-[0.15em] uppercase text-[#FF4D00] font-bold">
                     {project.id}
                   </span>
@@ -266,11 +287,11 @@ export default function ProjectsPage() {
                   </span>
                 </div>
 
-                <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#F5F5F5] mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#F5F5F5] mb-4 sm:mb-6 break-words">
                   {project.title}
                 </h2>
 
-                <p className="text-base md:text-lg leading-relaxed text-white/50 mb-8">
+                <p className="text-sm sm:text-base md:text-lg leading-relaxed text-white/50 mb-6 sm:mb-8">
                   {project.description}
                 </p>
 
@@ -279,7 +300,7 @@ export default function ProjectsPage() {
                   {project.stack.map(tech => (
                     <span
                       key={tech}
-                      className="text-[0.7rem] tracking-[0.05em] uppercase text-[#FF4D00] border border-[#FF4D00]/20 bg-[#FF4D00]/5 px-4 py-2 rounded-full font-medium"
+                      className="text-[0.65rem] sm:text-[0.7rem] tracking-[0.05em] uppercase text-[#FF4D00] border border-[#FF4D00]/20 bg-[#FF4D00]/5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium"
                     >
                       {tech}
                     </span>
